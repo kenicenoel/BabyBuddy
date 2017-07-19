@@ -36,7 +36,7 @@ public class PatientListAdaptor extends RecyclerView.Adapter<PatientListAdaptor.
     public void onBindViewHolder(PatientHolder patientHolder, int i)
     {
         Patient patient = patients.get(i);
-        patientHolder._id.setText(patient.get_id());
+        patientHolder._id.setText(String.valueOf(patient.get_id()));
         patientHolder.name.setText(patient.getGivenName() + " "+patient.getFamilyName());
         patientHolder.birthDate.setText(patient.getDateOfBirth());
         patientHolder.sex.setText(patient.getSex());
