@@ -3,6 +3,8 @@ package com.kenicenoel.babybuddy;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kenicenoel.babybuddy.objects.Patient;
 
@@ -14,12 +16,14 @@ public class PatientDetailsActivity extends AppCompatActivity
 
     private DatabaseHandler databaseHandler;
     private ArrayList<Patient> patientsList = new ArrayList<>();
+    private TextView name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_details);
+        name = (TextView) findViewById(R.id.patientName);
 
         // get handler for the database
         databaseHandler = new DatabaseHandler(this, null, null, 1);
@@ -28,6 +32,10 @@ public class PatientDetailsActivity extends AppCompatActivity
         if (patientId != -1)
         {
             loadPatientDataFromDatabase(patientId);
+        }
+        else
+        {
+            Toast.makeText(this, "Incorrect Id supplied", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -60,8 +68,9 @@ public class PatientDetailsActivity extends AppCompatActivity
             String stateParish = cursor.getString(stateParishIndex);
             String country = cursor.getString(countryIndex);
 
-            Patient patient = new Patient(_id, fname, lname,dob, sex, addr1, addr2, city, stateParish, country);
-            patientsList.add(patient);
+            name.setText(fname+ " "+lname);
+
+
 
         }
 
