@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryLight">#BBDEFB</color>
+    <color name="colorPrimaryDark">#1976D2</color>
+    <color name="primaryTextColor">#212121</color>
+    <color name="secondaryTextColor">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
+    <color name="money">#B5E655</color>
+    <color name="teal">#04BFBF</color>
+    <color name="translucent_black">#40000000</color>
+    <color name="slateBlack">#282D32</color>
+    <color name="greyishA">#5A5A5A</color>
+    <color name="greyishB">#EDF7F2</color>
+    <color name="greyishC">#ECF0F1</color>
+    <color name="white">#FFFFFF</color>
+    <color name="red">#E91E63</color>
+    <color name="colorAccent">#03A9F4</color>
+    <color name="purple">#8075C0</color>
+    <color name="lightPurple">#8E87EA</color>
+    <color name="background">#E0E2E0</color>
+    <color name="evergreen">#00B143</color>
+    <color name="colorFAB1">#2196F3</color>
+    <color name="colorFAB2">#E040FB</color>
+    <color name="blueCold">#90CAF9</color>
+    <color name="amber700">#FBC02D</color>
+    <color name="weatherPurple">#42205A</color>
+    <color name="weatherPurpleText">#825897</color>
+
+
+    <color name="secondaryButton">#ff1744</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="headerYellow">#FFDA44</color>
+
+    <color name="grey">#666666</color>
+    <color name="greyv2">#888888</color>
+    <color name="whiteGrey">#EEEEEE</color>
+    <color name="clouds">#ecf0f1</color>
+    <color name="emerald">#2ecc71</color>
+    <color name="greenA200">#69F0AE</color>
+    <color name="nephretis">#27ae60</color>
+    <color name="chatColor">#EDE9E4</color>
+    <color name="alzarin">#e74c3c</color>
+
+
+    <color name="materialPink">#E91E63</color>
+    <color name="materialDarkBlue">#2B5A84</color>
+    <color name="materialLightBlue">#1BB1E4</color>
+
+
+
+</resources>

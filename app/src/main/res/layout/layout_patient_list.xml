@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="10dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/patientName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed"
+        android:layout_marginLeft="10dp"
+        android:textSize="18sp"
+        android:textColor="@color/primaryTextColor"
+        android:textStyle="bold"
+        tools:text= "Donna Walker"/>
+
+    <TextView
+        android:id="@+id/patientId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/patientName"
+        android:fontFamily="sans-serif-condensed"
+        android:layout_marginLeft="10dp"
+        android:textSize="18sp"
+        android:textColor="@color/primaryTextColor"
+        tools:text="1091"
+        />
+
+    <TextView
+        android:id="@+id/patientSex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textSize="16sp"
+        android:textColor="@color/primaryTextColor"
+        tools:text="Female"
+
+        />
+
+    <TextView
+        android:id="@+id/patientBirthDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-regular"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@id/patientName"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="15sp"
+        android:drawablePadding="5dp"
+        tools:text="July 2, 2016"
+        />
+
+    <TextView
+        android:id="@+id/patientAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-regular"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@id/patientBirthDate"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="15sp"
+        android:drawablePadding="5dp"
+        tools:text="New Creek, Telescope, St Andrew"
+        />
+
+
+
+
+
+
+</RelativeLayout>
