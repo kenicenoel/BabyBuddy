@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="2dp"
+    android:padding="10dp"
+    android:layout_marginBottom="2dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        >
+
+        <TextView
+            android:id="@+id/encounterIdLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Encounter Id:"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="5dp"
+            android:textColor="@color/primaryTextColor" />
+
+        <TextView
+            android:id="@+id/encounterId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/encounterIdLabel"
+            android:padding="5dp"
+            tools:text="101"/>
+
+        <TextView
+            android:id="@+id/practitionerIdLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Practitioner Id:"
+            android:padding="5dp"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_toRightOf="@id/encounterId"
+            android:layout_marginLeft="25dp"
+            android:textColor="@color/primaryTextColor" />
+
+        <TextView
+            android:id="@+id/practitionerId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_toRightOf="@id/practitionerIdLabel"
+            tools:text="Practitioner 104"/>
+
+        <TextView
+            android:id="@+id/startTimeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start time:"
+            android:padding="5dp"
+            android:layout_below="@id/encounterId"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@color/primaryTextColor" />
+
+        <TextView
+            android:id="@+id/startTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_below="@id/encounterId"
+            android:layout_toRightOf="@id/startTimeLabel"
+            tools:text="9:40 am"/>
+
+
+        <TextView
+            android:id="@+id/endTimeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="End time:"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_below="@id/encounterId"
+            android:layout_toRightOf="@id/startTime"
+            android:padding="5dp"
+            android:textColor="@color/primaryTextColor" />
+
+        <TextView
+            android:id="@+id/endTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_below="@id/encounterId"
+            android:layout_toRightOf="@id/endTimeLabel"
+            tools:text="10:15 am"/>
+
+
+        <TextView
+            android:id="@+id/typeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type:"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_below="@id/endTimeLabel"
+            android:padding="5dp"
+            android:textColor="@color/primaryTextColor" />
+
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_below="@id/endTime"
+            android:layout_toRightOf="@id/typeLabel"
+            tools:text="Checkup"/>
+
+
+        <TextView
+            android:id="@+id/notesLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notes:"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_below="@id/type"
+            android:padding="5dp"
+            android:textColor="@color/primaryTextColor" />
+
+        <TextView
+            android:id="@+id/notes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_below="@id/notesLabel"
+            tools:text="Checkup"/>
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+</android.support.v7.widget.CardView>

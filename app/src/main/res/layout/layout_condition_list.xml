@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="2dp"
+    android:padding="10dp"
+    android:layout_marginBottom="2dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        >
+
+        <TextView
+            android:id="@+id/conditionIdLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Condtition Id:"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="5dp"
+            android:textColor="@color/primaryTextColor" />
+
+        <TextView
+            android:id="@+id/conditionId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/conditionIdLabel"
+            android:padding="5dp"
+            tools:text="101"/>
+
+        <TextView
+            android:id="@+id/encounterLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Encounter Id:"
+            android:padding="5dp"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_toRightOf="@id/conditionId"
+            android:layout_marginLeft="25dp"
+            android:textColor="@color/primaryTextColor" />
+
+        <TextView
+            android:id="@+id/encounterId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_toRightOf="@id/encounterLabel"
+            tools:text="Encounter 104"/>
+
+        <TextView
+            android:id="@+id/statusLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status:"
+            android:padding="5dp"
+            android:layout_below="@id/conditionId"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@color/primaryTextColor" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_below="@id/conditionId"
+            android:layout_toRightOf="@id/statusLabel"
+            tools:text="Treated"/>
+
+
+        <TextView
+            android:id="@+id/severityLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Severity:"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_below="@id/status"
+            android:padding="5dp"
+            android:textColor="@color/primaryTextColor" />
+
+        <TextView
+            android:id="@+id/severity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_below="@id/status"
+            android:layout_toRightOf="@id/severityLabel"
+            tools:text="Not severe"/>
+
+
+        <TextView
+            android:id="@+id/codeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Code:"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_below="@id/severity"
+            android:padding="5dp"
+            android:textColor="@color/primaryTextColor" />
+
+        <TextView
+            android:id="@+id/code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_below="@id/severity"
+            android:layout_toRightOf="@id/codeLabel"
+            tools:text="Green"/>
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+</android.support.v7.widget.CardView>

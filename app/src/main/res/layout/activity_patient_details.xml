@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/whiteGrey"
     tools:context="com.kenicenoel.babybuddy.PatientDetailsActivity">
 
     <LinearLayout
@@ -12,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:background="@color/whiteGrey"
+        android:background="@color/lightPurple"
         android:gravity="center"
         android:padding="10dp"
         android:orientation="vertical">
@@ -31,7 +32,7 @@
             android:fontFamily="sans-serif-condensed"
             android:textAllCaps="true"
             android:textStyle="bold"
-            android:textColor="@color/primaryTextColor"
+            android:textColor="@color/white"
             tools:text="Patient Name"/>
 
         <TextView
@@ -39,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/primaryTextColor"
+            android:textColor="@color/white"
             android:fontFamily="sans-serif-condensed"
             android:layout_gravity="center"
             tools:text="Male"/>
@@ -49,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/primaryTextColor"
+            android:textColor="@color/white"
             android:fontFamily="sans-serif-condensed"
             android:layout_gravity="center"
             tools:text="July 10 2016"/>
@@ -59,10 +60,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/primaryTextColor"
+            android:textColor="@color/white"
             android:fontFamily="sans-serif-condensed"
             android:layout_gravity="center"
             tools:text="Old Grove Rd"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:padding="5dp"
+                android:background="@color/weatherPurple"
+                android:layout_marginRight="5dp"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="center_vertical"
+                android:onClick="newEncounter"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:text="New Encounter" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:padding="5dp"
+                android:background="@color/weatherPurple"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:gravity="center_vertical"
+                android:onClick="newCondition"
+                android:text="Update Condition" />
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 
@@ -81,42 +116,56 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed"
-                android:textColor="@color/primaryTextColor"
+                android:textColor="@color/lightPurple"
+                android:textAllCaps="true"
+                android:textSize="15sp"
+                android:layout_marginBottom="10dp"
                 android:text="Conditions"/>
 
-            <ImageView
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:src="@drawable/ic_activity"
-                android:layout_gravity="center"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/conditonsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+            </android.support.v7.widget.RecyclerView>
 
             <TextView
                 android:id="@+id/encountersHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed"
-                android:textColor="@color/primaryTextColor"
+                android:textColor="@color/lightPurple"
+                android:textAllCaps="true"
+                android:textSize="15sp"
+                android:layout_marginBottom="10dp"
                 android:text="Encounters &amp; Observations"/>
 
-            <ImageView
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:src="@drawable/ic_file"
-                android:layout_gravity="center"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/encountersRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+            </android.support.v7.widget.RecyclerView>
 
             <TextView
                 android:id="@+id/personalObservationsHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed"
-                android:textColor="@color/primaryTextColor"
+                android:textColor="@color/lightPurple"
+                android:textAllCaps="true"
+                android:textSize="15sp"
+                android:layout_marginBottom="10dp"
                 android:text="Personal Observations"/>
 
-            <ImageView
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:src="@drawable/ic_eye"
-                android:layout_gravity="center"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/personalObservationsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
 
 
         </LinearLayout>

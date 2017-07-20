@@ -18,7 +18,7 @@
             >
 
             <ImageView
-                android:id="@+id/courierheader"
+                android:id="@+id/donnaCareHeader"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
                 android:src="@drawable/ic_heart"
@@ -31,15 +31,16 @@
                 android:id="@+id/login_Greeting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Baby Buddy"
+                android:text="DonnaCare"
                 android:textColor="@color/yellow"
                 android:fontFamily="sans-serif-light"
-                android:layout_below="@id/courierheader"
+                android:layout_below="@id/donnaCareHeader"
                 android:textSize="25sp"
                 android:layout_centerHorizontal="true"
                 android:maxWidth="400dp"
                 android:padding="15dp"
                 android:layout_marginTop="70dp"
+                android:textStyle="bold"
                 android:layout_marginBottom="5dp"/>
 
             <RelativeLayout
@@ -125,6 +126,21 @@
                         android:textColor="@color/headerYellow"/>
 
 
+                    <Button
+                        android:id="@+id/loginButton"
+                        android:background="@color/materialPink"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:textAllCaps="false"
+                        android:text="Login"
+                        android:layout_below="@id/loginMessage"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_centerHorizontal="true" />
+
+
 
                 </RelativeLayout>
 
@@ -138,18 +154,6 @@
 
         </RelativeLayout>
 
-        <Button
-            android:id="@+id/loginButton"
-            android:background="@android:color/transparent"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            android:textAllCaps="false"
-            android:text="Login"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
-            android:layout_centerHorizontal="true" />
 
 
 

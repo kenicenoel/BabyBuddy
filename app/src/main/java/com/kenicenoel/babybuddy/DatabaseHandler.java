@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.kenicenoel.babybuddy.objects.Condition;
+import com.kenicenoel.babybuddy.objects.Encounter;
 import com.kenicenoel.babybuddy.objects.Patient;
 import com.kenicenoel.babybuddy.objects.User;
 
@@ -67,7 +69,9 @@ public class DatabaseHandler extends SQLiteOpenHelper
     public static final String COLUMN_PASSWORD     = "password";
 
 
-
+    // Drop table statement tables
+    private static final String DROP_TABLE_CONDITIONS = "DROP TABLE " + TABLE_CONDITIONS+ " IF EXISTS";
+    private static final String DROP_TABLE_PATIENTS = "DROP TABLE " + TABLE_PATIENT+ " IF EXISTS";
 
 
 
@@ -141,7 +145,7 @@ public class DatabaseHandler extends SQLiteOpenHelper
         return "CREATE TABLE IF NOT EXISTS " + TABLE_CONDITIONS +
                 "("
                 +COLUMN_ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
-                +COLUMN_PATIENT_ID+" TEXT ,"
+                +COLUMN_PATIENT_ID+" INTEGER ,"
                 +COLUMN_STATUS+" TEXT ,"
                 +COLUMN_SEVERITY+" TEXT ,"
                 +COLUMN_CODE+" TEXT ,"
@@ -154,12 +158,12 @@ public class DatabaseHandler extends SQLiteOpenHelper
         return "CREATE TABLE IF NOT EXISTS " + TABLE_ENCOUNTER +
                 "("
                 +COLUMN_ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
-                +COLUMN_PATIENT_ID+" TEXT ,"
+                +COLUMN_PATIENT_ID+" INTEGER ,"
                 +COLUMN_START_TIME+" TEXT ,"
                 +COLUMN_END_TIME+" TEXT ,"
                 +COLUMN_TYPE+" TEXT ,"
                 +COLUMN_NOTES+" TEXT ,"
-                +COLUMN_PRACTIONER_ID+" TEXT"+
+                +COLUMN_PRACTIONER_ID+" INTEGER"+
                 ");";
     }
 
@@ -169,7 +173,7 @@ public class DatabaseHandler extends SQLiteOpenHelper
                 "("
                 +COLUMN_ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
                 +COLUMN_DATE+" TEXT ,"
-                +COLUMN_PATIENT_ID+" TEXT ,"
+                +COLUMN_PATIENT_ID+" INTEGER ,"
                 +COLUMN_WEIGHT+" TEXT ,"
                 +COLUMN_HEIGHT+" TEXT ,"
                 +COLUMN_DISPOSITION+" TEXT ,"
@@ -191,10 +195,6 @@ public class DatabaseHandler extends SQLiteOpenHelper
 
 
 
-
-
-
-
     // Pass in a new Patient Object and extract then save the values to the db
     public void addPatient(Patient patient)
     {
@@ -213,6 +213,41 @@ public class DatabaseHandler extends SQLiteOpenHelper
         database.insert(TABLE_PATIENT, null, values);
 
     }
+
+    public void addCondition(Condition condition)
+    {
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PATIENT_ID, condition.getPatientId());
+        values.put(COLUMN_STATUS, condition.getStatus());
+        values.put(COLUMN_SEVERITY, condition.getSeverity());
+        values.put(COLUMN_CODE, condition.getCode());
+        values.put(COLUMN_ENCOUNTER_ID, condition.getEncounter_id());
+
+
+        SQLiteDatabase database = getWritableDatabase();
+        database.insert(TABLE_CONDITIONS, null, values);
+
+    }
+
+
+    public void addEncounter(Encounter encounter)
+    {
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PATIENT_ID, encounter.getPatientId());
+        values.put(COLUMN_START_TIME, encounter.getStartTime());
+        values.put(COLUMN_END_TIME, encounter.getEndTime());
+        values.put(COLUMN_TYPE, encounter.getType());
+        values.put(COLUMN_NOTES, encounter.getNotes());
+        values.put(COLUMN_PRACTIONER_ID, encounter.getPractitionerId());
+
+
+        SQLiteDatabase database = getWritableDatabase();
+        database.insert(TABLE_ENCOUNTER, null, values);
+
+    }
+
+
+
 
 
 
@@ -257,10 +292,41 @@ public class DatabaseHandler extends SQLiteOpenHelper
         return database.rawQuery(query, null);
     }
 
-    public void deleteAlPatients()
+    public Cursor getConditionsForPatient(int _id)
+    {
+        SQLiteDatabase database = getWritableDatabase();
+        String query =
+                "SELECT * FROM " + TABLE_CONDITIONS
+                        +" INNER JOIN " +TABLE_PATIENT
+                        +" ON "+TABLE_CONDITIONS+"."+COLUMN_PATIENT_ID+"="+_id+" AND "+TABLE_PATIENT+"."+COLUMN_ID+"="+_id+";";
+        return database.rawQuery(query, null);
+    }
+
+    public Cursor getEncountersForPatient(int _id)
+    {
+        SQLiteDatabase database = getWritableDatabase();
+        String query =
+                "SELECT * FROM " + TABLE_ENCOUNTER
+                        +" INNER JOIN " +TABLE_PATIENT
+                        +" ON "+TABLE_ENCOUNTER+"."+COLUMN_PATIENT_ID+"="+_id+" AND "+TABLE_PATIENT+"."+COLUMN_ID+"="+_id+";";
+        return database.rawQuery(query, null);
+    }
+
+
+
+
+
+    public void deleteAllPatients()
     {
         SQLiteDatabase database = getWritableDatabase();
         database.delete(TABLE_PATIENT, null, null);
+        database.close();
+    }
+
+    public void deleteAllConditions()
+    {
+        SQLiteDatabase database = getWritableDatabase();
+        database.delete(TABLE_CONDITIONS, null, null);
         database.close();
     }
 

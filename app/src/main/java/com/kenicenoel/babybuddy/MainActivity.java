@@ -1,20 +1,25 @@
 package com.kenicenoel.babybuddy;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kenicenoel.babybuddy.adapters.PatientListAdaptor;
 import com.kenicenoel.babybuddy.objects.Patient;
+import com.kenicenoel.quicktools.SettingsBuddy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +33,9 @@ public class MainActivity extends AppCompatActivity implements PatientListAdapto
     private DatabaseHandler databaseHandler;
     private PatientListAdaptor adaptor;
     private EditText searchPatient;
+    private Toolbar toolbar;
+    private ImageView logout;
+
 
 
     @Override
@@ -41,8 +49,36 @@ public class MainActivity extends AppCompatActivity implements PatientListAdapto
 
         doctorName = (TextView) findViewById(R.id.doctorName);
         buddy = SettingsBuddy.getInstance(this);
-        patientsList= new ArrayList<>();
+        patientsList = new ArrayList<>();
         searchPatient = (EditText) findViewById(R.id.searchPatients);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        logout = (ImageView) toolbar.findViewById(R.id.logoutUser);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Are you sure?");
+                builder.setMessage("Are you sure you want to logout from the app? If so, choose 'yes' to continue.");
+                builder.setPositiveButton("Yes, logout",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which)
+                            {
+                                buddy.removeData("username");
+                                buddy.removeData("password");
+                                dialog.dismiss();
+                                finish();
+                            }
+                        });
+                builder.setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                builder.show();
+            }
+        });
+
         searchPatient.addTextChangedListener(new TextWatcher()
         {
             @Override
@@ -76,39 +112,16 @@ public class MainActivity extends AppCompatActivity implements PatientListAdapto
         // Get the current logged in doctor
         doctorName.append(buddy.getData("username" ));
 
-        createDummyPatientData();
-
-    }
-
-    private void createDummyPatientData()
-    {
-        databaseHandler.deleteAlPatients();
-        Patient a = new Patient("Donna", "Mae", "2016-07-13", "Female", "Old Creek", "Telescope", "St Andrew", "Grenada");
-        Patient b = new Patient("Jurell", "Dickington", "2015-03-18", "Male", "User Road", "Ocean Spray", "Laments", "Grenada");
-        Patient c = new Patient("Ted", "Roosevelt", "2016-02-10", "Male", "Riverlet Drive", "L'esterre", "Hillsborough", "Carriacou");
-        Patient d = new Patient("Sarah", "Pascal", "2017-02-15", "Female", "17 L'ordinateur Rd", "Grenville", "St Andrew", "Grenada");
-        Patient e = new Patient("Seesharp", "Lang", "2014-10-10", "Female", "Locus Street", "IDE Blvd", "St Georges", "Grenada");
-
-        // Add patient to list
-//        patientsList.add(a);
-//        patientsList.add(b);
-//        patientsList.add(c);
-//        patientsList.add(d);
-//        patientsList.add(e);
-
-        // save patient to database
-        databaseHandler.addPatient(a);
-        databaseHandler.addPatient(b);
-        databaseHandler.addPatient(c);
-        databaseHandler.addPatient(d);
-        databaseHandler.addPatient(e);
 
 
 
         loadPatientDataFromDatabase();
 
-
     }
+
+
+
+
 
     private void loadPatientDataFromDatabase()
     {
