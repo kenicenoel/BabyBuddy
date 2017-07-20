@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements PatientListAdapto
 
     private void createDummyPatientData()
     {
+        databaseHandler.deleteAlPatients();
         Patient a = new Patient("Donna", "Mae", "2016-07-13", "Female", "Old Creek", "Telescope", "St Andrew", "Grenada");
         Patient b = new Patient("Jurell", "Dickington", "2015-03-18", "Male", "User Road", "Ocean Spray", "Laments", "Grenada");
         Patient c = new Patient("Ted", "Roosevelt", "2016-02-10", "Male", "Riverlet Drive", "L'esterre", "Hillsborough", "Carriacou");
@@ -168,7 +169,6 @@ public class MainActivity extends AppCompatActivity implements PatientListAdapto
         Intent patientDetails = new Intent(getApplicationContext(), PatientDetailsActivity.class);
         patientDetails.putExtra("PatientId", _id);
         startActivity(patientDetails);
-        finish();
 
     }
 }

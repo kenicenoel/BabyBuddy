@@ -257,6 +257,13 @@ public class DatabaseHandler extends SQLiteOpenHelper
         return database.rawQuery(query, null);
     }
 
+    public void deleteAlPatients()
+    {
+        SQLiteDatabase database = getWritableDatabase();
+        database.delete(TABLE_PATIENT, null, null);
+        database.close();
+    }
+
 
 
 

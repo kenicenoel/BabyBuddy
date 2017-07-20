@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 import com.kenicenoel.babybuddy.objects.Patient;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class PatientDetailsActivity extends AppCompatActivity
@@ -17,6 +19,10 @@ public class PatientDetailsActivity extends AppCompatActivity
     private DatabaseHandler databaseHandler;
     private ArrayList<Patient> patientsList = new ArrayList<>();
     private TextView name;
+    private TextView dateOfBirth;
+    private TextView sex;
+    private TextView address;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -24,6 +30,10 @@ public class PatientDetailsActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_details);
         name = (TextView) findViewById(R.id.patientName);
+        dateOfBirth = (TextView) findViewById(R.id.dob);
+        sex = (TextView) findViewById(R.id.sex);
+        address = (TextView) findViewById(R.id.addr);
+
 
         // get handler for the database
         databaseHandler = new DatabaseHandler(this, null, null, 1);
@@ -61,7 +71,7 @@ public class PatientDetailsActivity extends AppCompatActivity
             String fname = cursor.getString(firstNameIndex);
             String lname = cursor.getString(lastNameIndex);
             String dob = cursor.getString(dateOfBirthIndex);
-            String sex = cursor.getString(sexIndex);
+            String gender = cursor.getString(sexIndex);
             String addr1 = cursor.getString(addr1Index);
             String addr2 = cursor.getString(addr2Index);
             String city = cursor.getString(cityIndex);
@@ -69,7 +79,9 @@ public class PatientDetailsActivity extends AppCompatActivity
             String country = cursor.getString(countryIndex);
 
             name.setText(fname+ " "+lname);
-
+            dateOfBirth.setText(dob);
+            sex.setText(gender);
+            address.setText(addr1+", "+addr2+", "+city+", "+stateParish+", "+country);
 
 
         }

@@ -7,45 +7,119 @@
     android:orientation="vertical"
     tools:context="com.kenicenoel.babybuddy.PatientDetailsActivity">
 
+    <LinearLayout
+        android:id="@+id/patientDetailsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@color/whiteGrey"
+        android:gravity="center"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_user"/>
+
+        <TextView
+            android:id="@+id/patientName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
+            android:fontFamily="sans-serif-condensed"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="@color/primaryTextColor"
+            tools:text="Patient Name"/>
+
+        <TextView
+            android:id="@+id/sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/primaryTextColor"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_gravity="center"
+            tools:text="Male"/>
+
+        <TextView
+            android:id="@+id/dob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/primaryTextColor"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_gravity="center"
+            tools:text="July 10 2016"/>
+
+        <TextView
+            android:id="@+id/addr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/primaryTextColor"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_gravity="center"
+            tools:text="Old Grove Rd"/>
+
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fillViewport="true">
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp">
-
-
-            <TextView
-                android:id="@+id/patientName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                tools:text="Patient Name"/>
+            android:orientation="vertical"
+            android:layout_margin="10dp">
 
             <TextView
-                android:id="@+id/sex"
+                android:id="@+id/conditionsHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                tools:text="Patient Name"/>
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/primaryTextColor"
+                android:text="Conditions"/>
+
+            <ImageView
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@drawable/ic_activity"
+                android:layout_gravity="center"/>
 
             <TextView
-                android:id="@+id/dob"
+                android:id="@+id/encountersHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                tools:text="Patient Name"/>
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/primaryTextColor"
+                android:text="Encounters &amp; Observations"/>
+
+            <ImageView
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@drawable/ic_file"
+                android:layout_gravity="center"/>
 
             <TextView
-                android:id="@+id/addr"
+                android:id="@+id/personalObservationsHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                tools:text="Patient Name"/>
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/primaryTextColor"
+                android:text="Personal Observations"/>
 
-        </RelativeLayout>
+            <ImageView
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@drawable/ic_eye"
+                android:layout_gravity="center"/>
+
+
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>
