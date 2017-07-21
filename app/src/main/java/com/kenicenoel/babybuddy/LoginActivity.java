@@ -161,14 +161,14 @@ public class LoginActivity extends AppCompatActivity
     private void createDummyConditionsData()
     {
         databaseHandler.deleteAllConditions();
-        Condition condition = new Condition(2, "treated", "Not severe", "1000", 1);
-        Condition conditionB = new Condition(2, "treated", "Not severe", "1001", 2);
-        Condition conditionC = new Condition(2, "treated", "Mild", "1002", 3);
-        Condition conditionD = new Condition(1, "treated", "Severe", "1003", 1);
-        Condition conditionE = new Condition(1, "treated", "Not severe", "1004", 2);
-        Condition conditionF = new Condition(3, "treated", "Not severe", "1005", 1);
-        Condition conditionG = new Condition(3, "treated", "Mild", "1004", 2);
-        Condition conditionH = new Condition(4, "treated", "Severe", "1001", 1);
+        Condition condition = new Condition(2, "Acute", "Moderate", "ICD-10", 1);
+        Condition conditionB = new Condition(2, "Acute", "Moderate", "ICD-10", 2);
+        Condition conditionC = new Condition(2, "Chronic", "Mild", "ICD-10", 3);
+        Condition conditionD = new Condition(1, "Acute", "Severe", "ICD-10", 1);
+        Condition conditionE = new Condition(1, "Chronic", "Moderate", "ICD-10", 2);
+        Condition conditionF = new Condition(3, "Acute", "Moderate", "ICD-10", 1);
+        Condition conditionG = new Condition(3, "Acute", "Mild", "ICD-10", 2);
+        Condition conditionH = new Condition(4, "Acute", "Severe", "ICD-10", 1);
 
         databaseHandler.addCondition(condition);
         databaseHandler.addCondition(conditionB);
