@@ -9,7 +9,7 @@
     app:titleTextColor="@color/primaryTextColor">
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -27,13 +27,23 @@
             />
 
         <ImageView
-            android:id="@+id/addNewEncounter"
+            android:id="@+id/addPatient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_plus"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="50dp"
+            android:layout_marginRight="80dp"
+            android:visibility="visible"/>
+
+        <ImageView
+            android:id="@+id/exportData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_f_save"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="45dp"
             android:visibility="visible"/>
 
         <ImageView

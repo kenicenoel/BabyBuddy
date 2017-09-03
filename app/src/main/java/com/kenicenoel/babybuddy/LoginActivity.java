@@ -6,6 +6,8 @@ package com.kenicenoel.babybuddy;
 
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +21,7 @@ import android.widget.TextView;
 import com.kenicenoel.babybuddy.objects.Condition;
 import com.kenicenoel.babybuddy.objects.Encounter;
 import com.kenicenoel.babybuddy.objects.Patient;
+import com.kenicenoel.babybuddy.objects.User;
 import com.kenicenoel.quicktools.SettingsBuddy;
 
 
@@ -37,6 +40,7 @@ public class LoginActivity extends AppCompatActivity
     private SettingsBuddy settingsBuddy;
     private String username;
     private String password;
+    private String emailAddress;
     private DatabaseHandler databaseHandler;
 
 
@@ -49,10 +53,22 @@ public class LoginActivity extends AppCompatActivity
         loginButton.setVisibility(View.INVISIBLE);
         settingsBuddy = SettingsBuddy.getInstance(getApplicationContext());
 
+
         // get handler for the database
         databaseHandler = new DatabaseHandler(this, null, null, 1);
+        addDemoUsers();
         continueLoginProcedure();
 
+
+    }
+
+    private void addDemoUsers()
+    {
+        User doctor = new User("Donna", "Walker", "donna@outlook.com", "donnaw", "password1", "Female", "Grenada", "Doctor" );
+        User parent = new User("Doug", "Green", "doug@outlook.com", "dougg", "password1", "Male", "Grenada", "Parent" );
+        databaseHandler.deleteAllUsers();
+        databaseHandler.addUser(doctor);
+        databaseHandler.addUser(parent);
     }
 
 
@@ -74,7 +90,6 @@ public class LoginActivity extends AppCompatActivity
             // Find the username, password and key fields
             u = (EditText) findViewById(R.id.usernameField);
             p = (EditText) findViewById(R.id.passwordField);
-
             // click the login button after password
             p.setOnEditorActionListener(new EditText.OnEditorActionListener()
             {
@@ -116,26 +131,47 @@ public class LoginActivity extends AppCompatActivity
         username = u.getText().toString();
         password = p.getText().toString();
 
+        Cursor login = databaseHandler.getUserByLogin(username, password);
+        DatabaseUtils.dumpCursorToString(login);
+        System.out.println(login.getCount());
+        if (login.getCount() == 1)
+        {
+            while (login.moveToNext())
+            {
+                int userRoleIndex = login.getColumnIndex(DatabaseHandler.COLUMN_ROLE);
+                String userRole = login.getString(userRoleIndex);
+                // Store the username, password, full name and key to enable automatic login each time
 
-        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Please wait while we log you in.", Snackbar.LENGTH_LONG);
-        snackbar.show();
+                settingsBuddy.saveData("username", username);
+                settingsBuddy.saveData("password", password);
+                settingsBuddy.saveData("role", userRole);
+            }
 
 
-        // Store the username, password, full name and key to enable automatic login each time
-
-        settingsBuddy.saveData("username", username);
-        settingsBuddy.saveData("password", password);
 
 
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 
-        // create dummy data before starting the app
-        createDummyPatientData();
-        createDummyConditionsData();
-        createDummyEncounters();
+            // create dummy data before starting the app
+            createDummyPatientData();
+            createDummyConditionsData();
+            createDummyEncounters();
 
-        startActivity(intent);
-        finish();
+            startActivity(intent);
+            finish();
+        }
+
+        else
+        {
+            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Incorrect login info entered.", Snackbar.LENGTH_LONG);
+            snackbar.show();
+        }
+
+
+
+
+
+
 
     }
 

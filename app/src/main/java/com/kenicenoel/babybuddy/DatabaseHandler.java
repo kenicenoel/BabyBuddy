@@ -67,6 +67,7 @@ public class DatabaseHandler extends SQLiteOpenHelper
 
     public static final String COLUMN_USERNAME     = "username";
     public static final String COLUMN_PASSWORD     = "password";
+    public static final String COLUMN_ROLE = "role";
 
 
     // Drop table statement tables
@@ -132,6 +133,8 @@ public class DatabaseHandler extends SQLiteOpenHelper
                 +COLUMN_FAMILY_NAME+" TEXT ,"
                 +COLUMN_USERNAME+" TEXT ,"
                 +COLUMN_PASSWORD+" TEXT ,"
+                +COLUMN_EMAIL+" TEXT ,"
+                +COLUMN_ROLE+" TEXT ,"
                 +COLUMN_ADDR1+" TEXT ,"
                 +COLUMN_ADDR2+" TEXT ,"
                 +COLUMN_CITY+" TEXT ,"
@@ -258,6 +261,8 @@ public class DatabaseHandler extends SQLiteOpenHelper
         ContentValues values = new ContentValues();
         values.put(COLUMN_GIVEN_NAME, user.getGivenName());
         values.put(COLUMN_FAMILY_NAME, user.getFamilyName());
+        values.put(COLUMN_EMAIL, user.getEmailAddress());
+        values.put(COLUMN_ROLE, user.getRole());
         values.put(COLUMN_USERNAME, user.getUserName());
         values.put(COLUMN_PASSWORD, user.getPassword());
 
@@ -275,6 +280,13 @@ public class DatabaseHandler extends SQLiteOpenHelper
         return database.rawQuery(query, null);
     }
 
+    public Cursor getUserByLogin(String emailAddress, String password)
+    {
+        SQLiteDatabase database = getWritableDatabase();
+        String query = "SELECT * FROM "+TABLE_USER+ " WHERE "+COLUMN_EMAIL+"='"+emailAddress+"' AND "+COLUMN_PASSWORD+"='"+password+"';";
+        return database.rawQuery(query, null);
+    }
+
 
 
     // Get a list of all patients
@@ -282,6 +294,13 @@ public class DatabaseHandler extends SQLiteOpenHelper
     {
         SQLiteDatabase database = getWritableDatabase();
         String query = "SELECT * FROM "+ TABLE_PATIENT+" ORDER BY date("+COLUMN_BIRTHDATE+") DESC";
+        return database.rawQuery(query, null);
+    }
+
+    public Cursor getOnePatient()
+    {
+        SQLiteDatabase database = getWritableDatabase();
+        String query = "SELECT * FROM "+ TABLE_PATIENT+" ORDER BY date("+COLUMN_BIRTHDATE+") DESC LIMIT 1";
         return database.rawQuery(query, null);
     }
 
@@ -320,6 +339,13 @@ public class DatabaseHandler extends SQLiteOpenHelper
     {
         SQLiteDatabase database = getWritableDatabase();
         database.delete(TABLE_PATIENT, null, null);
+        database.close();
+    }
+
+    public void deleteAllUsers()
+    {
+        SQLiteDatabase database = getWritableDatabase();
+        database.delete(TABLE_USER, null, null);
         database.close();
     }
 

@@ -95,6 +95,23 @@
                 android:onClick="newCondition"
                 android:text="Update Condition" />
 
+            <Button
+                android:id="@+id/exportDataButton"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:padding="5dp"
+                android:background="@color/weatherPurple"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:gravity="center_vertical"
+                android:onClick="exportJsonData"
+                android:layout_marginLeft="5dp"
+                android:text="Export data" />
+
+
+
+
         </LinearLayout>
 
 

@@ -1,10 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.kenicenoel.babybuddy.NewEncouterActivity">
+    android:orientation="vertical"
+    android:background="@color/whiteGrey"
+    tools:context="com.kenicenoel.babybuddy.NewPatientActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add patient"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/background_edit_text"
+        android:hint="Name of baby"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="sans-serif-condensed"
+        />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/background_edit_text"
+        android:hint="Address"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="sans-serif-condensed"
+        />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/background_edit_text"
+        android:hint="Date of Birth"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="sans-serif-condensed"
+        />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/background_edit_text"
+        android:hint="Email address"
+        android:fontFamily="sans-serif-condensed"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/secondaryButton"
+        android:text="Save"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-condensed"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:onClick="goToMain"
+        />
 
 
-</RelativeLayout>
+</LinearLayout>
